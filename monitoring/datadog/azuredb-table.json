@@ -1,0 +1,136 @@
+{
+    "viz": "query_table",
+    "requests": [
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.cpu_percent{$[AzureTags]} by {$Details}",
+            "conditional_formats": [
+                {
+                    "comparator": "<=",
+                    "palette": "white_on_green",
+                    "value": "25"
+                },
+                {
+                    "comparator": "<=",
+                    "palette": "white_on_yellow",
+                    "value": "75"
+                },
+                {
+                    "comparator": ">",
+                    "palette": "white_on_red",
+                    "value": "75"
+                }
+            ],
+            "alias": "CPU",
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.memory_percent{$[AzureTags]} by {$Details}",
+            "conditional_formats": [
+                {
+                    "comparator": "<=",
+                    "value": "25",
+                    "palette": "white_on_green"
+                },
+                {
+                    "comparator": "<=",
+                    "value": "75",
+                    "palette": "white_on_yellow"
+                },
+                {
+                    "comparator": ">",
+                    "value": "75",
+                    "palette": "white_on_red"
+                }
+            ],
+            "alias": "Memory",
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.storage_percent{$[AzureTags]} by {$Details}",
+            "conditional_formats": [
+                {
+                    "comparator": "<=",
+                    "value": "25",
+                    "palette": "white_on_green"
+                },
+                {
+                    "comparator": "<=",
+                    "value": "75",
+                    "palette": "white_on_yellow"
+                },
+                {
+                    "comparator": ">",
+                    "value": "75",
+                    "palette": "white_on_red"
+                }
+            ],
+            "alias": "Storage",
+            "cell_display_mode": [
+                "number"
+            ],
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.connections_failed{$[AzureTags]} by {$Details}.as_count()",
+            "conditional_formats": [],
+            "alias": "Active connections",
+            "cell_display_mode": [
+                "number"
+            ],
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.connections_failed{$[AzureTags]} by {$Details}.as_count()",
+            "conditional_formats": [],
+            "alias": "Failed connections",
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.io_consumption_percent{$[AzureTags]} by {$Details}",
+            "conditional_formats": [],
+            "alias": "IO consumption",
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.network_bytes_egress{$[AzureTags]} by {$Details}",
+            "conditional_formats": [],
+            "alias": "Network egress",
+            "cell_display_mode": [
+                "number"
+            ],
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.network_bytes_ingress{$[AzureTags]} by {$Details}",
+            "conditional_formats": [],
+            "alias": "Network ingress",
+            "cell_display_mode": [
+                "number"
+            ],
+            "aggregator": "avg"
+        },
+        {
+            "q": "avg:azure.dbfor$DB_NAME_servers.status{$[AzureTags]} by {$Details}",
+            "conditional_formats": [
+                {
+                    "comparator": ">=",
+                    "value": "1",
+                    "palette": "white_on_green"
+                },
+                {
+                    "comparator": "<",
+                    "value": "1",
+                    "palette": "white_on_red"
+                }
+            ],
+            "alias": "Status",
+            "cell_display_mode": [
+                "number"
+            ],
+            "aggregator": "avg",
+            "limit": 100,
+            "order": "desc"
+        }
+    ],
+    "has_search_bar": "auto"
+}
