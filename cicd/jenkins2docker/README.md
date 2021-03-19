@@ -45,11 +45,25 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ```shell
 # Check Jenkins content
 docker exec my-jenkins-v1 ls -l /var/jenkins_home
-# Backup it
-docker cp my-jenkins-1:/var/jenkins_home ~/jenkins_backup
+# Backup it in current folder
+docker cp my-jenkins-1:/var/jenkins_home ./jenkins_backup
 ```
 
 ### 2 Running it with persistent Volumes
+
+- Create a new Jenkins Docker container
+
+```shell
+docker run -d --name my-jenkins-v2 -p 8082:8080 -p 50002:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+```
+
+- After configure Jenkins, find jenkins data
+
+```shell
+docker volume inspect jenkins_home
+```
+
+- Make a backup of it
 
 ### 3 Using Dokcer-compose
 
