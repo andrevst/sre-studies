@@ -67,6 +67,20 @@ docker volume inspect jenkins_home
 
 ### 3 Using Dokcer-compose
 
+- Create [docker-compose.yml](./docker-compose.yml)
+  - Map the local volume with the container value
+
+```shell
+# Start the container
+docker-compose up -d
+
+# Get the initial admin password
+docker exec my-jenkins-v3 cat /var/jenkins_home/secrets/initialAdminPassword
+
+```
+
 ## References
 
 -[How to Run Jenkins in Docker using Docker Compose with Volumes](https://adamtheautomator.com/jenkins-docker/)
+-[RequestsDependencyWarning: urllib3 (1.25.2) or chardet (3.0.4) doesn't match a supported version! Fix](https://stackoverflow.com/questions/56155627/requestsdependencywarning-urllib3-1-25-2-or-chardet-3-0-4-doesnt-match-a-s)
+- [How to run docker-compose under WSL 2](https://stackoverflow.com/questions/60746121/how-to-run-docker-compose-under-wsl-2)
